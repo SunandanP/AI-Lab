@@ -11,15 +11,15 @@ public class Main {
         grid.add(new ArrayList<>(temp));
         temp.clear();
 
-        temp.add(4);
         temp.add(0);
+        temp.add(4);
         temp.add(6);
         grid.add(new ArrayList<>(temp));
         temp.clear();
 
         temp.add(7);
-        temp.add(8);
         temp.add(5);
+        temp.add(8);
         grid.add(new ArrayList<>(temp));
         temp.clear();
 

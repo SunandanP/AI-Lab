@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Puzzle {
+public class Puzzle implements Comparable<Puzzle> {
     private Arrangement arrangement;
     private Position blankPosition;
     private int heuristic;
@@ -196,5 +196,20 @@ public class Puzzle {
                 ", gScore=" + gScore +
                 ", fScore=" + fScore +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Puzzle o) {
+        for (int i = 0; i < this.arrangement.elements.size(); i++) {
+             for (int j = 0; j < this.arrangement.elements.size(); j++) {
+                if (this.arrangement.accessElement(i,j) == o.arrangement.accessElement(i,j)){
+                    continue;
+                }
+                else{
+                    return -1;
+                }
+             }
+        }
+        return 0;
     }
 }

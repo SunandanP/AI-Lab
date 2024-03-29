@@ -5,12 +5,14 @@ public class AStarEngine {
   private Puzzle source;
   private Puzzle destination;
   private int currentCount;
+  private boolean reached;
 
   public AStarEngine(Puzzle source, Puzzle destination, int currentCount) {
     visited = new ArrayList<>();
     this.source = source;
     this.destination = destination;
     this.currentCount = currentCount;
+    reached = false;
   }
 
   public ArrayList<Position> getVisited() {
@@ -71,58 +73,75 @@ public class AStarEngine {
 
 
   public void createPossibility(Puzzle puzzle){
-    puzzle.getArrangement().print(puzzle);
-    if (puzzle.getArrangement().equals(destination.getArrangement()) || isVisited(new Position(puzzle.getBlankPosition().getX(), puzzle.getBlankPosition().getY()))){
+    if (!reached){
+      puzzle.getArrangement().print(puzzle);
+    }
+
+    if (isVisited(new Position(puzzle.getBlankPosition().getX(), puzzle.getBlankPosition().getY()))){
+      return;
+    }
+
+    if (puzzle.getHeuristic() == 0){
+      System.out.println("Reached destination");
+      puzzle.getArrangement().print(puzzle);
+      reached = true;
       return;
     }
 
     visited.add(new Position(puzzle.getBlankPosition().getX(), puzzle.getBlankPosition().getY()));
 
     ArrayList<Puzzle> possibilities = new ArrayList<>();
-//    ArrayList<Integer> outOfPositionElements = Puzzle.getOutOfPlaceElements(puzzle, destination);
 
     if (puzzle.swapUp()){
       Puzzle temp = new Puzzle(puzzle);
       initPuzzle(temp);
-      possibilities.add(temp);
+      if (!isVisited(temp.getBlankPosition())) {
+        possibilities.add(temp);
+      }
       puzzle.swapDown();
     }
 
     if (puzzle.swapDown()){
       Puzzle temp = new Puzzle(puzzle);
       initPuzzle(temp);
-      possibilities.add(temp);
+      if (!isVisited(temp.getBlankPosition())) {
+        possibilities.add(temp);
+      }
       puzzle.swapUp();
     }
 
     if (puzzle.swapLeft()){
       Puzzle temp = new Puzzle(puzzle);
       initPuzzle(temp);
-      possibilities.add(temp);
+      if (!isVisited(temp.getBlankPosition())) {
+        possibilities.add(temp);
+      }
       puzzle.swapRight();
     }
 
     if (puzzle.swapRight()){
       Puzzle temp = new Puzzle(puzzle);
       initPuzzle(temp);
-      possibilities.add(temp);
+      if (!isVisited(temp.getBlankPosition())) {
+        possibilities.add(temp);
+      }
       puzzle.swapLeft();
     }
 
     //find out minimum
-    int min = possibilities.getFirst().getFScore();
+    int min = Integer.MAX_VALUE;
     ArrayList<Puzzle> mins = new ArrayList<>();
-    for (int i = 0; i < possibilities.size(); i++) {
-      if (possibilities.get(i).getFScore() < min){
-        min = possibilities.get(i).getFScore();
+    for (Puzzle possibility : possibilities) {
+      if (possibility.getFScore() < min){
+        min = possibility.getFScore();
       }
     }
 
     //add all minimum valued puzzles to an execution list
-    for (int i = 0; i < possibilities.size(); i++) {
-      if (possibilities.get(i).getFScore() == min){
-        if (!isVisited(possibilities.get(i).getBlankPosition()))
-          mins.add(possibilities.get(i));
+    for (Puzzle possibility : possibilities) {
+      if (possibility.getFScore() == min){
+        if (!isVisited(possibility.getBlankPosition()))
+          mins.add(possibility);
       }
     }
 
