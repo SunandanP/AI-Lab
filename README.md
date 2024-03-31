@@ -4,7 +4,7 @@
 
 ### 2. [Implement n-queens/8 Puzzles problem using Hill-climbing / simulated annealing / A* algorithm etc.](https://github.com/SunandanP/AI-Lab/tree/main/AStarPuzzle)
 
-### 3. [Write a program for sorting algorithms using appropriate knowledge representation and reasoning techniques.]
+### 3. Write a program for sorting algorithms using appropriate knowledge representation and reasoning techniques.
 ### 4. [Write a program for the Information Retrieval System using appropriate NLP tools (such as NLTK, Open NLP, …)](https://github.com/SunandanP/AI-Lab/blob/main/NLP.ipynb)
 #### a. Text tokenization
 #### b. Count word frequency
