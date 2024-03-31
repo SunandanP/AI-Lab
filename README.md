@@ -1,6 +1,6 @@
 # Java Implementation of SPPU TE IT (2019 Pattern) Artificial Intelligence Lab Practicals (Elective - II)
 ## Practicals :
-### 1. Identify and Implement heuristic and search strategy for Travelling Salesperson Problem
+### 1. Identify and Implement heuristic and search strategy for Travelling Salesperson Problem [https://github.com/SunandanP/AI-Lab/tree/main/TravellingSalespersonProblem]
 
 ### 2. Implement n-queens/8 Puzzles problem using Hill-climbing / simulated annealing / A* algorithm etc.
 
