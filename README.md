@@ -12,5 +12,6 @@
 #### d. POS tagging
 ### 5. [Write a program for Water jug problem / Towers of Hanoi](https://github.com/SunandanP/AI-Lab/tree/main/TowerOfHanoi)
 ### 6. [Write a program for the Tic-Tac-Toe game.](https://github.com/SunandanP/AI-Lab/tree/main/TicTacToe)
+### #. [BONUS : A Star Graphical Search](https://github.com/SunandanP/AI-Lab/tree/main/AStarSearch)
 
 
